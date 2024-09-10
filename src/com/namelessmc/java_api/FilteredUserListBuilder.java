@@ -1,44 +1,28 @@
 package com.namelessmc.java_api;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
-
-import java.util.*;
-
 public class FilteredUserListBuilder {
-
-	private final @NonNull NamelessAPI api;
-	private @Nullable Map<UserFilter<?>, Object> filters;
-	private @NonNull String operator = "AND";
-
-	FilteredUserListBuilder(@NonNull NamelessAPI api) {
+	private final  NamelessAPI api;
+	private  Map<UserFilter<?>, Object> filters;
+	private  String operator = "AND";
+	FilteredUserListBuilder( NamelessAPI api) {
 		this.api = api;
 	}
-
-	public <T> @NonNull FilteredUserListBuilder withFilter(final @NonNull UserFilter<T> filter,
-														   final @NonNull T value) {
+	public <T>  FilteredUserListBuilder withFilter(final  UserFilter<T> filter,
+														   final  T value) {
 		if (filters == null) {
 			filters = new HashMap<>();
 		}
-
 		filters.put(filter, value);
 		return this;
 	}
-
-	public @NonNull FilteredUserListBuilder all() {
+	public  FilteredUserListBuilder all() {
 		this.operator = "AND";
 		return this;
 	}
-
-	public @NonNull FilteredUserListBuilder any() {
+	public  FilteredUserListBuilder any() {
 		this.operator = "OR";
 		return this;
 	}
-
-	public @NonNull List<@NonNull NamelessUser> makeRequest() throws NamelessException {
+	public  List< NamelessUser> makeRequest() throws NamelessException {
 		final Object[] parameters;
 		if (filters != null) {
 			int filterCount = filters.size();
@@ -54,7 +38,6 @@ public class FilteredUserListBuilder {
 		} else {
 			parameters = new Object[0];
 		}
-
 		final JsonObject response = this.api.getRequestHandler().get("users", parameters);
 		final JsonArray array = response.getAsJsonArray("users");
 		final List<NamelessUser> users = new ArrayList<>(array.size());
@@ -75,8 +58,6 @@ public class FilteredUserListBuilder {
 			}
 			users.add(new NamelessUser(this.api, id, username, true, uuid, false, -1L));
 		}
-
 		return Collections.unmodifiableList(users);
 	}
-
 }
