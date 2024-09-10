@@ -1,48 +1,26 @@
 package com.namelessmc.java_api;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
 public class FilteredUserListBuilder {
-
-	private final @NotNull NamelessAPI api;
-	private @Nullable Map<UserFilter<?>, Object> filters;
-	private @NotNull String operator = "AND";
-
-	FilteredUserListBuilder(@NotNull NamelessAPI api) {
+	private final  NamelessAPI api;
+	private  Map<UserFilter<?>, Object> filters;
+	private  String operator = "AND";
+	FilteredUserListBuilder( NamelessAPI api) {
 		this.api = api;
 	}
-
 	public <T> FilteredUserListBuilder withFilter(UserFilter<T> filter, T value) {
 		if (filters == null) {
 			filters = new HashMap<>();
 		}
-
 		filters.put(filter, value);
 		return this;
 	}
-
 	public FilteredUserListBuilder all() {
 		this.operator = "AND";
 		return this;
 	}
-
 	public FilteredUserListBuilder any() {
 		this.operator = "OR";
 		return this;
 	}
-
 	public List<NamelessUser> makeRequest() throws NamelessException {
 		final Object[] parameters;
 		if (filters != null) {
@@ -59,7 +37,6 @@ public class FilteredUserListBuilder {
 		} else {
 			parameters = new Object[0];
 		}
-
 		final JsonObject response = this.api.getRequestHandler().get("users", parameters);
 		final JsonArray array = response.getAsJsonArray("users");
 		final List<NamelessUser> users = new ArrayList<>(array.size());
@@ -80,8 +57,6 @@ public class FilteredUserListBuilder {
 			}
 			users.add(new NamelessUser(this.api, id, username, true, uuid, false, -1L));
 		}
-
 		return Collections.unmodifiableList(users);
 	}
-
 }

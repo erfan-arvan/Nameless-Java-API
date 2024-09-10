@@ -1,15 +1,6 @@
 package com.namelessmc.java_api;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class LanguageCodeMap {
-
 	private static final Map<String, String> NAMELESS_TO_POSIX = new HashMap<>();
-
 	static {
 		NAMELESS_TO_POSIX.put("Czech", "cs_CZ");
 		NAMELESS_TO_POSIX.put("German", "de_DE");
@@ -33,9 +24,7 @@ public class LanguageCodeMap {
 		NAMELESS_TO_POSIX.put("Turkish", "tr_TR");
 		NAMELESS_TO_POSIX.put("Chinese(Simplified)", "zh_CN");
 	}
-
-	static @Nullable String getLanguagePosix(final @NotNull String language) {
+	static  String getLanguagePosix(final  String language) {
 		return NAMELESS_TO_POSIX.get(language);
 	}
-
 }
