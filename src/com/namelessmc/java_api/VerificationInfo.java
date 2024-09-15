@@ -1,42 +1,42 @@
 package com.namelessmc.java_api;
-
+import javax.annotation.Nullable;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
 public class VerificationInfo {
 
-	private final boolean verified;
-	private final  JsonObject json;
+    private final boolean verified;
 
-	VerificationInfo(final boolean verified,  final JsonObject json) {
-		this.verified = verified;
-		this.json = json;
-	}
+    private final JsonObject json;
 
-	public boolean isVerified() {
-		return this.verified;
-	}
+    VerificationInfo(final boolean verified, final JsonObject json) {
+        this.verified = verified;
+        this.json = json;
+    }
 
-	public boolean isVerifiedCustom( final String name) {
-		final JsonElement e = this.json.get(name);
-		if (e == null) {
-			throw new UnsupportedOperationException("The API did not return verification for '" + name + "'");
-		} else {
-			return e.getAsBoolean();
-		}
-	}
+    public boolean isVerified() {
+        return this.verified;
+    }
 
-	public boolean isVerifiedEmail() {
-		return isVerifiedCustom("email");
-	}
+    public boolean isVerifiedCustom(final String name) {
+        final JsonElement e = this.json.get(name);
+        if (e == null) {
+            throw new UnsupportedOperationException("The API did not return verification for '" + name + "'");
+        } else {
+            return e.getAsBoolean();
+        }
+    }
 
-	public boolean isVerifiedMinecraft() {
-		return isVerifiedCustom("minecraft");
-	}
+    public boolean isVerifiedEmail() {
+        return isVerifiedCustom("email");
+    }
 
-	public boolean isVerifiedDiscord() {
-		return isVerifiedCustom("discord");
-	}
+    public boolean isVerifiedMinecraft() {
+        return isVerifiedCustom("minecraft");
+    }
 
+    public boolean isVerifiedDiscord() {
+        return isVerifiedCustom("discord");
+    }
 }

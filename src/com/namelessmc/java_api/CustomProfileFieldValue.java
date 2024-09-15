@@ -1,24 +1,23 @@
 package com.namelessmc.java_api;
-
+import javax.annotation.Nullable;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class CustomProfileFieldValue {
 
-	private final  CustomProfileField field;
-	private final  String value;
+    private final CustomProfileField field;
 
-	CustomProfileFieldValue( CustomProfileField field,  String value) {
-		this.field = field;
-		this.value = value;
-	}
+    private final String value;
 
-	public  CustomProfileField getField() {
-		return this.field;
-	}
+    CustomProfileFieldValue(CustomProfileField field, String value) {
+        this.field = field;
+        this.value = value;
+    }
 
-	public  String getValue() {
-		return value;
-	}
+    public CustomProfileField getField() {
+        return this.field;
+    }
 
+    public String getValue() {
+        return value;
+    }
 }

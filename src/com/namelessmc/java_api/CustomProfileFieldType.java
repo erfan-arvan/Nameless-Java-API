@@ -1,15 +1,12 @@
 package com.namelessmc.java_api;
-
+import javax.annotation.Nullable;
 public enum CustomProfileFieldType {
 
-	TEXT,
-	TEXT_AREA,
-	DATE;
+    TEXT, TEXT_AREA, DATE;
 
-	private static final CustomProfileFieldType[] VALUES = CustomProfileFieldType.values();
+    private static final CustomProfileFieldType[] VALUES = CustomProfileFieldType.values();
 
-	public static CustomProfileFieldType fromNamelessTypeInt(int namelessTypeInt) {
-		return VALUES[namelessTypeInt - 1];
-	}
-
+    public static CustomProfileFieldType fromNamelessTypeInt(int namelessTypeInt) {
+        return VALUES[namelessTypeInt - 1];
+    }
 }

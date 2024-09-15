@@ -1,49 +1,48 @@
 package com.namelessmc.java_api;
-
+import javax.annotation.Nullable;
 public class Notification {
 
-	private final String message;
-	private final String url;
-	private final NotificationType type;
+    private final String message;
 
-	public Notification(final String message, final String url, final NotificationType type) {
-		this.message = message;
-		this.url = url;
-		this.type = type;
-	}
+    private final String url;
 
-	public String getMessage() {
-		return this.message;
-	}
+    private final NotificationType type;
 
-	public String getUrl() {
-		return this.url;
-	}
+    public Notification(final String message, final String url, final NotificationType type) {
+        this.message = message;
+        this.url = url;
+        this.type = type;
+    }
 
-	public NotificationType getType() {
-		return this.type;
-	}
+    public String getMessage() {
+        return this.message;
+    }
 
-	public enum NotificationType {
+    public String getUrl() {
+        return this.url;
+    }
 
-		TAG,
-		MESSAGE,
-		LIKE,
-		PROFILE_COMMENT,
-		COMMENT_REPLY,
-		THREAD_REPLY,
-		FOLLOW,
+    public NotificationType getType() {
+        return this.type;
+    }
 
-		UNKNOWN;
+    public enum NotificationType {
 
-		public static NotificationType fromString(final String string) {
-			try {
-				return NotificationType.valueOf(string.replace('-', '_').toUpperCase());
-			} catch (final IllegalArgumentException e) {
-				return NotificationType.UNKNOWN;
-			}
-		}
+        TAG,
+        MESSAGE,
+        LIKE,
+        PROFILE_COMMENT,
+        COMMENT_REPLY,
+        THREAD_REPLY,
+        FOLLOW,
+        UNKNOWN;
 
-	}
-
+        public static NotificationType fromString(final String string) {
+            try {
+                return NotificationType.valueOf(string.replace('-', '_').toUpperCase());
+            } catch (final IllegalArgumentException e) {
+                return NotificationType.UNKNOWN;
+            }
+        }
+    }
 }
