@@ -15,8 +15,10 @@ public enum NamelessVersion {
     V2_0_0_PR_12("2.0.0-pr12", "2.0.0 pre-release 12", 2, 0, true),
     V2_0_0_PR_13("2.0.0-pr13", "2.0.0 pre-release 13", 2, 0, true);
 
-    private static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Set<NamelessVersion> SUPPORTED_VERSIONS = EnumSet.of(// Actually, only pr13 is supported but pr13 development releases still report as pr12
-    V2_0_0_PR_12, V2_0_0_PR_13);
+    private static final // Actually, only pr13 is supported but pr13 development releases still report as pr12
+    @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Set<NamelessVersion> // Actually, only pr13 is supported but pr13 development releases still report as pr12
+    SUPPORTED_VERSIONS = // Actually, only pr13 is supported but pr13 development releases still report as pr12
+    EnumSet.of(V2_0_0_PR_12, V2_0_0_PR_13);
 
     private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name;
 

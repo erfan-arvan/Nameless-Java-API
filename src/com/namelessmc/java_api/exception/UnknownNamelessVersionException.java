@@ -1,11 +1,10 @@
 package com.namelessmc.java_api.exception;
-
+import javax.annotation.Nullable;
 public class UnknownNamelessVersionException extends Exception {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public UnknownNamelessVersionException(final String versionString) {
-		super("Cannot parse version string '" + versionString + "'. Try updating the API or the software using it.");
-	}
-
+    public UnknownNamelessVersionException(final String versionString) {
+        super("Cannot parse version string '" + versionString + "'. Try updating the API or the software using it.");
+    }
 }

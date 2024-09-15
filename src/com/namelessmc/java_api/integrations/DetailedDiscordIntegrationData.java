@@ -1,19 +1,19 @@
 package com.namelessmc.java_api.integrations;
-
+import javax.annotation.Nullable;
 import com.google.gson.JsonObject;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class DetailedDiscordIntegrationData extends DetailedIntegrationData implements IDiscordIntegrationData {
 
-	private final long idLong;
+    private final long idLong;
 
-	public DetailedDiscordIntegrationData(final  JsonObject json) {
-		super(json);
-		this.idLong = Integer.parseInt(this.getIdentifier());
-	}
+    public DetailedDiscordIntegrationData(final JsonObject json) {
+        super(json);
+        this.idLong = Integer.parseInt(this.getIdentifier());
+    }
 
-	@Override
-	public long getIdLong() {
-		return this.idLong;
-	}
+    @Override
+    public long getIdLong() {
+        return this.idLong;
+    }
 }

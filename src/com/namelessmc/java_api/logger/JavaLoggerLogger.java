@@ -1,23 +1,24 @@
 package com.namelessmc.java_api.logger;
-
+import javax.annotation.Nullable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JavaLoggerLogger extends ApiLogger {
 
-	private final Logger logger;
-	private final Level level;
-	private final String prefix;
+    private final Logger logger;
 
-	public JavaLoggerLogger(final Logger logger, final Level level, final String prefix) {
-		this.logger = logger;
-		this.level = level;
-		this.prefix = prefix;
-	}
+    private final Level level;
 
-	@Override
-	public void log(final String string) {
-		this.logger.log(this.level, this.prefix + string);
-	}
+    private final String prefix;
 
+    public JavaLoggerLogger(final Logger logger, final Level level, final String prefix) {
+        this.logger = logger;
+        this.level = level;
+        this.prefix = prefix;
+    }
+
+    @Override
+    public void log(final String string) {
+        this.logger.log(this.level, this.prefix + string);
+    }
 }
